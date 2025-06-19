@@ -1,0 +1,67 @@
+<!doctype html>
+
+{#
+This template is not meant to be rendered directly. Instead, this template
+defines the general layout of every page in this application. Here, we write all
+the HTML and template statements that will be common to every page. The
+templates for individual pages will extend from this template and define only
+the content for the blocks defined here. For template inheritance, see:
+
+https://jinja.palletsprojects.com/en/stable/templates/#template-inheritance
+#}
+
+<html>
+
+<head>
+  <title>Greeter!</title>
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+
+<body>
+  <p>What do you want to do?</p>
+
+  <ul>
+    <li><a href="{{ url_for('index') }}">What's your name?</a></li>
+    <li><a href="{{ url_for('greet') }}">Greet me!</a></li>
+    <li><a href="{{ url_for('forget') }}">Forget me</a></li>
+  </ul>
+
+  {#
+  This is the first block that this template defines. The content of this block,
+  when redefined by a "child" template, will be the title of the page.
+  #}
+
+  <h1>{% block title %}{% endblock title %}</h1>
+
+  {#
+  This template code will show "flash messages", some messages that might be set
+  by the routes to notify the user about interesting events. Flash messages last
+  only for one request. If they are not shown, they will be forgotten. For more
+  details about Flash messages, see:
+
+  https://flask.palletsprojects.com/en/stable/patterns/flashing/
+  #}
+
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <p>Messages:</p>
+
+  <ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% endwith %}
+
+  {#
+  Here we define the "content" block, which child templates will redefine to add
+  their unique content to the final page.
+  #}
+
+  <div>
+    {% block content %}{% endblock %}
+  </div>
+</body>
+
+</html>

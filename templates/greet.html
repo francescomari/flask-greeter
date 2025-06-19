@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}
+Greetings!
+{% endblock title %}
+
+{#
+The greeting page expects to always have a "name" variable in the template
+variables. It's up to the route to handle the case where the name of the current
+user can't be retrieved.
+#}
+
+{% block content %}
+<p>Hello, {{ name }}!</p>
+{% endblock content %}
