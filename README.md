@@ -79,7 +79,7 @@ You can see the flash message in the decoded cookie value:
 {"_flashes":[{" t":["message","I forgot you..."]}]}
 ```
 
-To know more about cookies, read [Using HTTP cookies][4]. 
+To know more about cookies, read [Using HTTP cookies][4].
 
 ## Signing cookies
 
@@ -91,7 +91,7 @@ To know more about cookies, read [Using HTTP cookies][4].
 When Flask creates a cookie, it computes a signature that depends on a secret
 key (`app.secret_key`) and the value of the cookie. The signature looks like a
 random sequence of numbers, letters, and symbols. Even if it looks random, the
-same cookie value and the same secret key always generate the same signature. 
+same cookie value and the same secret key always generate the same signature.
 
 When Flask receives a cookie, it first splits it into two parts: the actual
 cookie value and the signature. It then re-computes the signature from the
@@ -101,9 +101,9 @@ that the cookie is safe to use.
 
 Why?
 
-What I have been calling a "signature" until now is better known as a [Message
-Authentication Code (MAC)][6]. A MAC helps Flask establish two important
-properties: authenticity and integrity. 
+What I have been calling a "signature" until now is better known as a
+[Message Authentication Code (MAC)][6]. A MAC helps Flask establish two
+important properties: authenticity and integrity.
 
 Authenticity guarantees that a cookie was really created by Flask. Flask uses
 the secret key to create a signature and to verify whether the signature is
@@ -117,7 +117,7 @@ the server without being modified. Because different cookie values generate very
 different signatures, if a cookie value generates the same signature as the one
 Flask expects, Flask can guarantee that nobody changed the cookie value.
 
-The cookies created by Flask are signed using the [ItsDangerous][5] library. 
+The cookies created by Flask are signed using the [ItsDangerous][5] library.
 
 [1]: https://flask.palletsprojects.com/en/stable/
 [2]: https://github.com/francescomari/flask-introduction
